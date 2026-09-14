@@ -661,9 +661,33 @@ header.site .logo a span{
 }
 
 /* ===================== MOBILE FIX ===================== */
+/* ===================== HAMBURGER (default: hidden di desktop) ===================== */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:32px; height:32px;
+  background:none;
+  flex-shrink:0;
+}
+.hamburger span{
+  display:block;
+  width:100%;
+  height:2px;
+  background:var(--ink);
+  border-radius:2px;
+  transition:transform .25s, opacity .25s;
+}
+.header-actions-wrap{ display:flex; align-items:center; gap:10px; }
+
+.header-wrap.nav-open .hamburger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.header-wrap.nav-open .hamburger span:nth-child(2){ opacity:0; }
+.header-wrap.nav-open .hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* ===================== MOBILE FIX (satu media query aja) ===================== */
 @media (max-width: 768px){
 
-  /* Header — jangan sampai wrap 2 baris & makan layar */
   .header-wrap{ padding:0 14px; top:10px; }
   header.site{
     padding:10px 14px;
@@ -672,38 +696,55 @@ header.site .logo a span{
   }
   .logo img{ height:32px; }
   header.site .logo a span{ font-size:14px; }
-  nav.main{
-    order:3;
-    width:100%;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    gap:16px;
-    -webkit-overflow-scrolling:touch;
-    padding-top:10px;
-    margin-top:8px;
-    border-top:1px solid var(--line);
-  }
-  nav.main::-webkit-scrollbar{ display:none; }
-  nav.main a{ white-space:nowrap; font-size:13px; }
+
+  .hamburger{ display:flex; }
+
   header.site .btn-primary{
-    padding:8px 14px; font-size:12px; white-space:nowrap; flex-shrink:0;
+    display:none;
   }
 
-  /* Hero */
+  nav.main{
+    position:absolute;
+    top:100%;
+    left:0; right:0;
+    margin-top:10px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.1);
+    flex-direction:column;
+    gap:2px;
+    padding:10px;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    pointer-events:none;
+    transition:max-height .3s ease, opacity .2s ease;
+  }
+  nav.main a{
+    padding:12px 14px;
+    border-radius:8px;
+    font-size:14.5px;
+  }
+  nav.main a:hover{ background:var(--cream); }
+
+  .header-wrap.nav-open nav.main{
+    max-height:320px;
+    opacity:1;
+    pointer-events:auto;
+  }
+
   .hero{ grid-template-columns:1fr; padding:36px 18px 26px; gap:26px; }
   .hero h1{ font-size:30px; max-width:100%; }
   .hero p.lead{ max-width:100%; }
   .hero .cta-row{ flex-direction:column; }
   .hero .cta-row a{ text-align:center; width:100%; }
 
-  /* Stat strip — biar gak overflow ke samping */
   .stat-strip{ flex-wrap:wrap; margin:0 18px; }
   .stat{ flex:1 1 50%; border-right:none; border-bottom:1px solid var(--line); }
 
-  /* Kalkulator */
   .calc-wrap{ grid-template-columns:1fr; }
 
-  /* Section umum */
   .section{ padding:40px 18px; }
   .section-head{ flex-direction:column; align-items:flex-start; gap:10px; }
   .section-head p{ max-width:100%; }

@@ -5,15 +5,13 @@
       <p>Jasa pengelolaan media sosial untuk UMKM fashion di Makassar. konten, jadwal posting, sampai laporan performa bulanan.</p>
     </div>
 
-
     <div class="footer-col">
-  <h4>Navigasi</h4>
-  <a href="#beranda">Beranda</a>
-  <a href="#layanan">Layanan</a>
-  <a href="#portofolio">Portofolio</a>
-  <a href="#tentang">Tentang Kami</a>
-</div>
-
+      <h4>Navigasi</h4>
+      <a href="#beranda">Beranda</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#portofolio">Portofolio</a>
+      <a href="#tentang">Tentang Kami</a>
+    </div>
 
     <div class="footer-col">
       <h4>Hubungi Kami</h4>
@@ -36,11 +34,25 @@
     </div>
   </div>
 
-
   <div class="footer-bottom">
     <span>© 2026 Foura Creative. Dibuat dengan ♥ di Makassar.</span>
   </div>
 </footer>
 
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const headerWrap = document.querySelector('.header-wrap');
+  const navLinks = document.querySelectorAll('nav.main a');
 
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = headerWrap.classList.toggle('nav-open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
 
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      headerWrap.classList.remove('nav-open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
