@@ -660,3 +660,62 @@ header.site .logo a span{
   color: var(--wine);
 }
 
+/* ===================== MOBILE FIX ===================== */
+@media (max-width: 768px){
+
+  /* Header — jangan sampai wrap 2 baris & makan layar */
+  .header-wrap{ padding:0 14px; top:10px; }
+  header.site{
+    padding:10px 14px;
+    flex-wrap:nowrap;
+    gap:8px;
+  }
+  .logo img{ height:32px; }
+  header.site .logo a span{ font-size:14px; }
+  nav.main{
+    order:3;
+    width:100%;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:16px;
+    -webkit-overflow-scrolling:touch;
+    padding-top:10px;
+    margin-top:8px;
+    border-top:1px solid var(--line);
+  }
+  nav.main::-webkit-scrollbar{ display:none; }
+  nav.main a{ white-space:nowrap; font-size:13px; }
+  header.site .btn-primary{
+    padding:8px 14px; font-size:12px; white-space:nowrap; flex-shrink:0;
+  }
+
+  /* Hero */
+  .hero{ grid-template-columns:1fr; padding:36px 18px 26px; gap:26px; }
+  .hero h1{ font-size:30px; max-width:100%; }
+  .hero p.lead{ max-width:100%; }
+  .hero .cta-row{ flex-direction:column; }
+  .hero .cta-row a{ text-align:center; width:100%; }
+
+  /* Stat strip — biar gak overflow ke samping */
+  .stat-strip{ flex-wrap:wrap; margin:0 18px; }
+  .stat{ flex:1 1 50%; border-right:none; border-bottom:1px solid var(--line); }
+
+  /* Kalkulator */
+  .calc-wrap{ grid-template-columns:1fr; }
+
+  /* Section umum */
+  .section{ padding:40px 18px; }
+  .section-head{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .section-head p{ max-width:100%; }
+  .cat-head{ padding:30px 18px 0; }
+  .cat-head h1{ font-size:26px; }
+
+  .bundle-row{ grid-template-columns:1fr; padding:20px 18px 10px; }
+  .case-row{ grid-template-columns:1fr; }
+  .portfolio-grid{ padding:20px 18px 40px; }
+  .catalog-title{ padding:30px 18px 0; }
+  .content-plan{ margin:24px 18px 30px; padding:26px 18px; }
+
+  .plan-cta{ flex-direction:column; align-items:flex-start; text-align:left; padding:26px 22px; }
+  .plan-cta .btn-primary{ width:100%; text-align:center; }
+}
